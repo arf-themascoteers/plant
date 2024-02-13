@@ -17,7 +17,7 @@ class PlantCNN(nn.Module):
         # x = self.pool(torch.relu(self.conv2(x)))
         # x = self.flatter(x)
         # x = self.fc1(x)
-        x = x.reshape(x.shape[0], x.shape[1], x.shape[2]*x.shape[3])
+        x = x.reshape(x.shape[0], x.shape[1]*x.shape[2]*x.shape[3])
         x = self.fc2(x)
         return x
 
