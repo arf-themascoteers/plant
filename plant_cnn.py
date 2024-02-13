@@ -5,20 +5,17 @@ import torch.nn as nn
 class PlantCNN(nn.Module):
     def __init__(self):
         super(PlantCNN, self).__init__()
-        # self.conv1 = nn.Conv2d(1, 8, kernel_size=16, stride=1)
-        # self.pool = nn.AvgPool2d(kernel_size=10, stride=2)
-        # self.conv2 = nn.Conv2d(8, 16, kernel_size=16, stride=1)
-        # self.flatter = nn.Flatten()
-        # self.fc1 = nn.Linear(224, 2)
-        self.fc2 = nn.Linear(125*75, 2)
+        self.conv1 = nn.Conv2d(1, 8, kernel_size=16, stride=1)
+        self.pool = nn.AvgPool2d(kernel_size=10, stride=2)
+        self.conv2 = nn.Conv2d(8, 16, kernel_size=16, stride=1)
+        self.flatter = nn.Flatten()
+        self.fc1 = nn.Linear(224, 2)
 
     def forward(self, x):
-        # x = self.pool(torch.relu(self.conv1(x)))
-        # x = self.pool(torch.relu(self.conv2(x)))
-        # x = self.flatter(x)
-        # x = self.fc1(x)
-        x = x.reshape(x.shape[0], x.shape[1]*x.shape[2]*x.shape[3])
-        x = self.fc2(x)
+        x = self.pool(torch.relu(self.conv1(x)))
+        x = self.pool(torch.relu(self.conv2(x)))
+        x = self.flatter(x)
+        x = self.fc1(x)
         return x
 
 
