@@ -6,7 +6,7 @@ from torch.utils.data import DataLoader
 
 def test():
     model = PlantCNN()
-    model.load_state_dict(torch.load(';saved.pth'))
+    model.load_state_dict(torch.load('saved.pth'))
     model.eval()
     test_dataset = PlantDataset(is_train=False)
     test_dataloader = DataLoader(test_dataset, batch_size=100, shuffle=False)
@@ -23,8 +23,6 @@ def test():
 
     accuracy = correct / total
     print(f'Test Accuracy: {accuracy * 100:.2f}%')
-
-
 
 
 if __name__ == "__main__":
