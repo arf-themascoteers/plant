@@ -8,6 +8,7 @@ import torch.optim as optim
 
 def train():
     model = PlantCNN()
+    model.train()
     criterion = nn.CrossEntropyLoss()
     optimizer = optim.Adam(model.parameters(), lr=0.001)
     ds = PlantDataset(is_train=True)
