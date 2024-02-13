@@ -1,6 +1,14 @@
 import torch
 import pandas as pd
 import os
+from torchvision import transforms
+from PIL import Image
+
+image_path = "path/to/your/image.jpg"
+transform = transforms.ToTensor()
+image = Image.open(image_path)
+tensor_image = transform(image)
+print(tensor_image.shape)
 
 df = pd.read_csv("data/info.csv")
 filenames = df["File.Name"]
