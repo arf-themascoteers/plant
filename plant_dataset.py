@@ -24,13 +24,13 @@ class PlantDataset(Dataset):
     def __getitem__(self, idx):
         group = self.group[idx]
         group = self.label_mapping[group]
-        group = torch.tensor(group, dtype=torch.float32)
+        group = torch.tensor(group)
         image_file = self.image_files[idx]
         image_file = image_file + ".png"
 
         image_path = f"data/images/{image_file}"
         transform = transforms.Compose([
-            transforms.Resize((500, 300)),
+            transforms.Resize((125, 75)),
             transforms.ToTensor(),
             transforms.Normalize([0.5], [0.5])
         ])
